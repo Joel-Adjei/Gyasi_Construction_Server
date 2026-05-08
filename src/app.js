@@ -10,6 +10,7 @@ import serviceRoutes from "./routes/service.routes.js";
 import contactRoutes from "./routes/contact.routes.js";
 import messageRoutes from "./routes/message.routes.js";
 import settingsRoutes from "./routes/settings.routes.js";
+// import "./utils/seed.js";
 
 const app = express();
 

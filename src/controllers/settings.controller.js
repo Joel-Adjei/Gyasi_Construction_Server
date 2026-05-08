@@ -4,12 +4,11 @@ import { Settings } from "../models/Settings.js";
 // @route   GET /api/settings
 // @access  Public
 const getSettings = async (req, res) => {
-  const settings = await Settings.findOne({});
-  if (settings) {
-    res.json(settings);
-  } else {
-    res.status(404).json({ message: "Settings not found" });
+  let settings = await Settings.findOne({});
+  if (!settings) {
+    settings = await Settings.create({});
   }
+  res.json(settings);
 };
 
 // @desc    Create settings

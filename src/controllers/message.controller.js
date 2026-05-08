@@ -15,7 +15,16 @@ const submitContactForm = async (req, res) => {
     message,
   });
 
-  const createdMessage = await newMessage.save();
+  let createdMessage;
+  try {
+    createdMessage = await newMessage.save();
+  } catch (err) {
+    if (err.name === "ValidationError") {
+      const errors = Object.values(err.errors).map((e) => e.message);
+      return res.status(400).json({ message: errors.join(", ") });
+    }
+    throw err;
+  }
 
   // Send Email
   if (process.env.SMTP_USER && process.env.SMTP_PASS !== "password") {

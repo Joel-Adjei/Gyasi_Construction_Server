@@ -4,10 +4,10 @@ const settingsSchema = new mongoose.Schema(
   {
     cloudinaryCloudName: { type: String, default: "" },
     cloudinaryUploadPreset: { type: String, default: "" },
-    companyName: { type: String, required: true },
-    contactAddress: { type: String, required: true },
-    contactEmail: { type: String, required: true },
-    contactPhone: { type: String, required: true },
+    companyName: { type: String, default: "" },
+    contactAddress: { type: String, default: "" },
+    contactEmail: { type: String, default: "" },
+    contactPhone: { type: String, default: "" },
   },
   { timestamps: true },
 );
