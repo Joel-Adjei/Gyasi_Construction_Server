@@ -8,6 +8,31 @@ const settingsSchema = new mongoose.Schema(
     contactAddress: { type: String, default: "" },
     contactEmail: { type: String, default: "" },
     contactPhone: { type: String, default: "" },
+    whatsApp: {
+      label: { type: String, default: "WhatAapp" },
+      name: { type: String, default: "" },
+      link: { type: String, default: "" },
+    },
+    facebook: {
+      label: { type: String, default: "Facebook" },
+      name: { type: String, default: "" },
+      link: { type: String, default: "" },
+    },
+    instagram: {
+      label: { type: String, default: "Instagram" },
+      name: { type: String, default: "" },
+      link: { type: String, default: "" },
+    },
+    twitter: {
+      label: { type: String, default: "Twitter" },
+      name: { type: String, default: "" },
+      link: { type: String, default: "" },
+    },
+    snap: {
+      label: { type: String, default: "Snap Chat" },
+      name: { type: String, default: "" },
+      link: { type: String, default: "" },
+    },
   },
   { timestamps: true },
 );
