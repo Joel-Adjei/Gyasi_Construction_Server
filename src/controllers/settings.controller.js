@@ -22,6 +22,11 @@ const createSettings = async (req, res) => {
     contactAddress,
     contactEmail,
     contactPhone,
+    whatsApp,
+    instagram,
+    facebook,
+    twitter,
+    snap,
   } = req.body;
 
   // Check if settings already exist
@@ -39,6 +44,11 @@ const createSettings = async (req, res) => {
     contactAddress,
     contactEmail,
     contactPhone,
+    whatsApp,
+    instagram,
+    facebook,
+    twitter,
+    snap,
   });
 
   const createdSettings = await settings.save();
@@ -56,11 +66,17 @@ const updateSettings = async (req, res) => {
     contactAddress,
     contactEmail,
     contactPhone,
+    whatsApp,
+    instagram,
+    facebook,
+    twitter,
+    snap,
   } = req.body;
 
   const settings = await Settings.findOne({});
 
   if (settings) {
+    //Cloudinary Config
     settings.cloudinaryCloudName =
       cloudinaryCloudName !== undefined
         ? cloudinaryCloudName
@@ -69,10 +85,26 @@ const updateSettings = async (req, res) => {
       cloudinaryUploadPreset !== undefined
         ? cloudinaryUploadPreset
         : settings.cloudinaryUploadPreset;
+    //Company Details
     settings.companyName = companyName || settings.companyName;
     settings.contactAddress = contactAddress || settings.contactAddress;
     settings.contactEmail = contactEmail || settings.contactEmail;
     settings.contactPhone = contactPhone || settings.contactPhone;
+    //Social Media
+    settings.whatsApp.name = whatsApp.name || settings.whatsApp.name;
+    settings.whatsApp.link = whatsApp.link || settings.whatsApp.link;
+
+    settings.instagram.name = instagram.name || settings.instagram.name;
+    settings.instagram.link = instagram.link || settings.instagram.link;
+
+    settings.facebook.name = facebook.name || settings.facebook.name;
+    settings.facebook.link = facebook.link || settings.facebook.link;
+
+    settings.twitter.name = twitter.name || settings.twitter.name;
+    settings.twitter.link = twitter.link || settings.twitter.link;
+
+    settings.snap.name = snap.name || settings.snap.name;
+    settings.snap.link = snap.link || settings.snap.link;
 
     const updatedSettings = await settings.save();
     res.json(updatedSettings);
